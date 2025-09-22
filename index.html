@@ -38,7 +38,7 @@
     <h1>Find og erstat tekst</h1>
 
     <form action="">
-      <textarea id=""></textarea>
+      <textarea id="textarea"></textarea>
 
       <div id="input-fields">
         <label for="find-tekst">Find tekst</label>
@@ -55,5 +55,30 @@
       <div class="result-text">Resultat tekst</div>
       <p>Teksten blev opdateret <span class="counter">x</span> gange</p>
     </div>
+
+    <script>
+      // TODO 1: Hent referencer til textarea, inputfelterne og knappen (document.getElementById / querySelector)
+
+      // TODO 2: Tilføj en event listener på knappen ("click")
+
+      // TODO 3: Inde i event listeneren:
+      //   - Hent teksten fra textarea (.value)
+      //   - Hent søgeteksten fra første input (.value)
+      //   - Hent erstatningsteksten fra andet input (.value)
+
+      // TODO 4: Lav en RegExp baseret på søgeteksten
+      //   Hint: new RegExp(searchText, "gi")
+      //   (g = global, i = ignore case)
+
+      // TODO 5: Tæl hvor mange matches der findes i teksten
+      //   Hint: tekst.match(regex) → giver array af matches (eller null hvis ingen)
+
+      // TODO 6: Erstat alle matches med erstatningsteksten
+      //   Hint: tekst.replace(regex, erstatning)
+
+      // TODO 7: Opdater textarea eller et separat <div> med den nye tekst
+
+      // TODO 8: Vis også brugeren hvor mange udskiftninger der blev foretaget
+    </script>
   </body>
 </html>
