@@ -4,20 +4,56 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
+    <style>
+      .input-fields {
+        display: flex;
+        flex-direction: column;
+      }
+
+      input[type="text"],
+      textarea {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+        background-color: #04aa6d;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
     <h1>Find og erstat tekst</h1>
 
-    <textarea id=""></textarea>
+    <form action="">
+      <textarea id=""></textarea>
 
-    <div id="input-fields">
-      <label for="find-tekst">Find tekst</label>
-      <input type="text" id="find-tekst" name="find-tekst" />
+      <div id="input-fields">
+        <label for="find-tekst">Find tekst</label>
+        <input type="text" id="find-tekst" name="find-tekst" />
 
-      <label for="erstat-tekst">Erstat tekst</label>
-      <input type="text" id="erstat-tekst" name="erstat-tekst" />
+        <label for="erstat-tekst">Erstat tekst</label>
+        <input type="text" id="erstat-tekst" name="erstat-tekst" />
+      </div>
+
+      <button type="submit" id="erstat-button">Erstat teksten</button>
+    </form>
+
+    <div id="result">
+      <div class="result-text">Resultat tekst</div>
+      <p>Teksten blev opdateret <span class="counter">x</span> gange</p>
     </div>
-
-    <button id="erstat-button">Erstat teksten</button>
   </body>
 </html>
