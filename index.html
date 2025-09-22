@@ -79,23 +79,29 @@
         //   - Hent erstatningsteksten fra andet input (.value)
         const findTekst = findInput.value;
         console.log("Søg efter:", findTekst);
+
         const erstatTekst = erstatInput.value;
         console.log("Erstat med:", erstatTekst);
+
+        // TODO 4: Lav en RegExp baseret på søgeteksten
+        //   Hint: new RegExp(searchText, "gi")
+        //   (g = global, i = ignore case)
+
+        const regex = new RegExp(findTekst, "gi");
+
+        // TODO 5: Tæl hvor mange matches der findes i teksten
+        //   Hint: tekst.match(regex) → giver array af matches (eller null hvis ingen)
+        const matches = hentTekst.match(regex);
+
+        // TODO 6: Erstat alle matches med erstatningsteksten
+        //   Hint: tekst.replace(regex, erstatning)
+        const nyTekst = findTekst(regex, erstatTekst);
+        console.log("Ny tekst:", nyTekst);
+
+        // TODO 7: Opdater textarea eller et separat <div> med den nye tekst
+
+        // TODO 8: Vis også brugeren hvor mange udskiftninger der blev foretaget
       });
-
-      // TODO 4: Lav en RegExp baseret på søgeteksten
-      //   Hint: new RegExp(searchText, "gi")
-      //   (g = global, i = ignore case)
-
-      // TODO 5: Tæl hvor mange matches der findes i teksten
-      //   Hint: tekst.match(regex) → giver array af matches (eller null hvis ingen)
-
-      // TODO 6: Erstat alle matches med erstatningsteksten
-      //   Hint: tekst.replace(regex, erstatning)
-
-      // TODO 7: Opdater textarea eller et separat <div> med den nye tekst
-
-      // TODO 8: Vis også brugeren hvor mange udskiftninger der blev foretaget
     </script>
   </body>
 </html>
