@@ -48,7 +48,7 @@
         <input type="text" id="erstat-tekst" name="erstat-tekst" />
       </div>
 
-      <button id="action-button">Erstat teksten</button>
+      <button type="button" id="actionButton">Erstat teksten</button>
     </form>
 
     <div id="result">
@@ -57,18 +57,31 @@
     </div>
 
     <script>
-      // TODO 1: Hent referencer til textarea, inputfelterne og knappen (document.getElementById / querySelector)
-      let textarea = document.getElementById("textarea");
-      let findTekst = document.getElementById("find-tekst");
-      let erstatTekst = document.getElementById("erstat-tekst");
-      let actionButton = document.getElementById("action-button");
+      let actionButton = document.getElementById("actionButton");
 
       // TODO 2: Tilføj en event listener på knappen ("click")
+      actionButton.addEventListener("click", function () {
+        console.log("knappen klikket");
 
-      // TODO 3: Inde i event listeneren:
-      //   - Hent teksten fra textarea (.value)
-      //   - Hent søgeteksten fra første input (.value)
-      //   - Hent erstatningsteksten fra andet input (.value)
+        // TODO 1: Hent referencer til textarea, inputfelterne og knappen (document.getElementById / querySelector)
+
+        let textareaInput = document.getElementById("textarea");
+        let findInput = document.getElementById("find-tekst");
+        let erstatInput = document.getElementById("erstat-tekst");
+
+        // TODO 3: Inde i event listeneren:
+        //   - Hent teksten fra textarea (.value)
+
+        let hentTekst = textareaInput.value;
+        console.log("Tekst:", hentTekst);
+
+        //   - Hent søgeteksten fra første input (.value)
+        //   - Hent erstatningsteksten fra andet input (.value)
+        const findTekst = findInput.value;
+        console.log("Søg efter:", findTekst);
+        const erstatTekst = erstatInput.value;
+        console.log("Erstat med:", erstatTekst);
+      });
 
       // TODO 4: Lav en RegExp baseret på søgeteksten
       //   Hint: new RegExp(searchText, "gi")
