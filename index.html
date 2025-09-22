@@ -52,41 +52,29 @@
     </form>
 
     <div id="result">
-      <div class="result-text">Resultat tekst</div>
-      <p>Teksten blev opdateret <span class="counter">x</span> gange</p>
+      <div id="result-text">Resultat tekst</div>
+      <p>Teksten blev opdateret <span class="counter">{count}</span> gange</p>
     </div>
 
     <script>
       let actionButton = document.getElementById("actionButton");
 
-      // TODO 2: Tilføj en event listener på knappen ("click")
+      // Tilføjer eventlistener
       actionButton.addEventListener("click", function () {
-        console.log("knappen klikket");
-
-        // TODO 1: Hent referencer til textarea, inputfelterne og knappen (document.getElementById / querySelector)
-
+        //Hent referencer
         let textareaInput = document.getElementById("textarea");
         let findInput = document.getElementById("find-tekst");
         let erstatInput = document.getElementById("erstat-tekst");
+        let resultatTekst = document.getElementById("result-text");
+        const counterSpan = document.querySelector(".counter");
 
-        // TODO 3: Inde i event listeneren:
-        //   - Hent teksten fra textarea (.value)
-
+        // Hent teksten fra de forskellige input
         let hentTekst = textareaInput.value;
-        console.log("Tekst:", hentTekst);
-
-        //   - Hent søgeteksten fra første input (.value)
-        //   - Hent erstatningsteksten fra andet input (.value)
         const findTekst = findInput.value;
-        console.log("Søg efter:", findTekst);
-
         const erstatTekst = erstatInput.value;
-        console.log("Erstat med:", erstatTekst);
 
-        // TODO 4: Lav en RegExp baseret på søgeteksten
-        //   Hint: new RegExp(searchText, "gi")
-        //   (g = global, i = ignore case)
-
+        // Lav en RegExp baseret på søgeteksten.
+        // (g = global, i = ignore case)
         const regex = new RegExp(findTekst, "gi");
 
         // TODO 5: Tæl hvor mange matches der findes i teksten
@@ -95,12 +83,17 @@
 
         // TODO 6: Erstat alle matches med erstatningsteksten
         //   Hint: tekst.replace(regex, erstatning)
-        const nyTekst = findTekst(regex, erstatTekst);
+        const nyTekst = hentTekst.replaceAll(regex, erstatTekst);
         console.log("Ny tekst:", nyTekst);
 
         // TODO 7: Opdater textarea eller et separat <div> med den nye tekst
+        // opdater textarea eller et andet element
+
+        resultatTekst.textContent = nyTekst;
 
         // TODO 8: Vis også brugeren hvor mange udskiftninger der blev foretaget
+        const count = matches ? matches.length : 0;
+        counterSpan.textContent = count;
       });
     </script>
   </body>
