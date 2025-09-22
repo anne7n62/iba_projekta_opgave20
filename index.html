@@ -8,7 +8,7 @@
   </head>
   <body>
     <section id="wrapper">
-      <h1>Find og erstat tekst</h1>
+      <h1>Find og erstat tekst.</h1>
 
       <div class="flex">
         <form>
@@ -26,9 +26,7 @@
 
         <div id="result">
           <div id="result-text"><p></p></div>
-          <p class="countertekst">
-            Teksten blev opdateret <span class="counter">x</span> gange
-          </p>
+          <p class="countertekst">♡( •ॢ◡-ॢ)✧˖° ♡</p>
         </div>
       </div>
     </section>
@@ -43,7 +41,7 @@
         let findInput = document.getElementById("find-tekst");
         let erstatInput = document.getElementById("erstat-tekst");
         let resultatTekst = document.querySelector("#result-text p");
-        const antal = document.querySelector(".counter");
+        const counterTekst = document.querySelector(".countertekst");
 
         // Hent teksten fra de forskellige input
         let hentTekst = textareaInput.value;
@@ -70,9 +68,13 @@
 
         // Vis også brugeren hvor mange udskiftninger der blev foretaget
         const count = matches ? matches.length : 0;
-        antal.textContent = count;
+        if (count === 0) {
+          counterTekst.textContent = "Nul matches – ingen ændringer foretaget";
+        } else if (count === 1) {
+          counterTekst.textContent = `Teksten blev ændret ${count} gang`;
+        } else {
+          counterTekst.textContent = `Teksten blev ændret ${count} gange`;
 
-        // TO DO: Meddelelse gang(e) eller ingen match
         // Stort bogstav efter .!?
       });
     </script>
