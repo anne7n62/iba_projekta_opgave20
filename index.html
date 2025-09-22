@@ -48,7 +48,7 @@
         <input type="text" id="erstat-tekst" name="erstat-tekst" />
       </div>
 
-      <button type="submit" id="erstat-button">Erstat teksten</button>
+      <button id="action-button">Erstat teksten</button>
     </form>
 
     <div id="result">
@@ -58,6 +58,10 @@
 
     <script>
       // TODO 1: Hent referencer til textarea, inputfelterne og knappen (document.getElementById / querySelector)
+      let textarea = document.getElementById("textarea");
+      let findTekst = document.getElementById("find-tekst");
+      let erstatTekst = document.getElementById("erstat-tekst");
+      let actionButton = document.getElementById("action-button");
 
       // TODO 2: Tilføj en event listener på knappen ("click")
 
