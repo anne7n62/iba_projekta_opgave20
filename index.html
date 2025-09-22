@@ -6,55 +6,107 @@
     <title>Document</title>
 
     <style>
-      .input-fields {
+      body {
+        background-color: #f4f4ed;
+        margin: 0;
+        padding: 50px;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        line-height: 1;
+        font-family: sans-serif;
+      }
+
+      #wrapper {
+        background-color: #d9d9d9;
+        max-width: 900px;
+        padding: 50px;
+        margin: 0 auto;
+        box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.8);
+      }
+
+      .flex {
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+      }
+
+      /* Gør kolonner lige brede */
+      .flex > form,
+      .flex > #result {
+        flex: 1;
+      }
+
+      form {
         display: flex;
         flex-direction: column;
+        gap: 20px;
+      }
+      #input-fields {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
       }
 
       input[type="text"],
       textarea {
         width: 100%;
         padding: 12px 20px;
-        margin: 8px 0;
-        display: block;
+        margin: 0;
         border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
+        border-radius: 0;
+        box-shadow: 0px -1px 0px #fff, -1px 1px 2px rgba(0, 0, 0, 0.8);
       }
 
-      input[type="submit"] {
-        width: 100%;
-        background-color: #04aa6d;
-        color: white;
-        padding: 14px 20px;
+      button {
         margin: 8px 0;
         border: none;
-        border-radius: 4px;
+        border-radius: 0;
         cursor: pointer;
+        padding: 5px 18px 4px 18px;
+        background-color: #aeceff;
+        box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.8), 0px -1px 0px #fff;
+      }
+
+      #result-text,
+      .countertekst {
+        box-sizing: border-box;
+        padding: 10px;
+        border-radius: 30px;
+        white-space: nowrap;
+        box-shadow: 0px 1.5px 0px #fff, 0px -1.5px 1.43px rgba(0, 0, 0, 0.6);
+        pointer-events: none;
+        width: 100%;
+        background-color: rgb(226, 181, 255);
       }
     </style>
   </head>
   <body>
-    <h1>Find og erstat tekst</h1>
+    <section id="wrapper">
+      <h1>Find og erstat tekst</h1>
 
-    <form action="">
-      <textarea id="textarea"></textarea>
+      <div class="flex">
+        <form action="">
+          <textarea id="textarea"></textarea>
 
-      <div id="input-fields">
-        <label for="find-tekst">Find tekst</label>
-        <input type="text" id="find-tekst" name="find-tekst" />
+          <div id="input-fields">
+            <label for="find-tekst">Find tekst</label>
+            <input type="text" id="find-tekst" name="find-tekst" />
 
-        <label for="erstat-tekst">Erstat tekst</label>
-        <input type="text" id="erstat-tekst" name="erstat-tekst" />
+            <label for="erstat-tekst">Erstat tekst</label>
+            <input type="text" id="erstat-tekst" name="erstat-tekst" />
+          </div>
+
+          <button type="button" id="actionButton">Erstat teksten</button>
+        </form>
+
+        <div id="result">
+          <div id="result-text">Resultat tekst</div>
+          <p class="countertekst">
+            Teksten blev opdateret <span class="counter">x</span> gange
+          </p>
+        </div>
       </div>
-
-      <button type="button" id="actionButton">Erstat teksten</button>
-    </form>
-
-    <div id="result">
-      <div id="result-text">Resultat tekst</div>
-      <p>Teksten blev opdateret <span class="counter">{count}</span> gange</p>
-    </div>
+    </section>
 
     <script>
       let actionButton = document.getElementById("actionButton");
@@ -66,7 +118,7 @@
         let findInput = document.getElementById("find-tekst");
         let erstatInput = document.getElementById("erstat-tekst");
         let resultatTekst = document.getElementById("result-text");
-        const counterSpan = document.querySelector(".counter");
+        const antal = document.querySelector(".counter");
 
         // Hent teksten fra de forskellige input
         let hentTekst = textareaInput.value;
@@ -86,14 +138,17 @@
         const nyTekst = hentTekst.replaceAll(regex, erstatTekst);
         console.log("Ny tekst:", nyTekst);
 
-        // TODO 7: Opdater textarea eller et separat <div> med den nye tekst
+        // Opdater textarea eller et separat <div> med den nye tekst
         // opdater textarea eller et andet element
 
         resultatTekst.textContent = nyTekst;
 
-        // TODO 8: Vis også brugeren hvor mange udskiftninger der blev foretaget
+        // Vis også brugeren hvor mange udskiftninger der blev foretaget
         const count = matches ? matches.length : 0;
         counterSpan.textContent = count;
+
+        // TO DO: Meddelelse gang(e) eller ingen match
+        // Stort bogstav efter .!?
       });
     </script>
   </body>
