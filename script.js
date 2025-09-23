@@ -16,7 +16,8 @@ actionButton.addEventListener("click", function () {
 
   // Lav en RegExp baseret på søgeteksten.
   // (g = global, i = ignore case)
-  const regex = new RegExp(findTekst, "gi");
+  //   const regex = new RegExp(findTekst, "gi");
+  const regex = new RegExp(`\\b${findTekst}\\b`, "gi");
 
   // TODO 5: Tæl hvor mange matches der findes i teksten
   //   Hint: tekst.match(regex) → giver array af matches (eller null hvis ingen)
