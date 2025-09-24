@@ -1,47 +1,57 @@
-let actionButton = document.getElementById("actionButton");
+let knapErstat = document.getElementById("knapErstat");
 
-// Tilføjer eventlistener
-actionButton.addEventListener("click", function () {
+knapErstat.addEventListener("click", function () {
   //Hent referencer
-  let textareaInput = document.getElementById("textarea");
+  let tekstfeltInput = document.getElementById("textarea");
   let findInput = document.getElementById("find-tekst");
   let erstatInput = document.getElementById("erstat-tekst");
   let resultatTekst = document.querySelector("#result-text p");
-  const counterTekst = document.querySelector(".countertekst");
+  const statusBesked = document.querySelector(".statusbesked");
 
-  // Hent teksten fra de forskellige input
-  let hentTekst = textareaInput.value;
+  // Hent string values
+  let tekstfelt = tekstfeltInput.value;
   const findTekst = findInput.value;
   const erstatTekst = erstatInput.value;
 
+  // // Tjek om søgeteksten kun er bogstaver (inkl. æøåÆØÅ)
+  // const erOrd = /^[a-zA-ZæøåÆØÅ]+$/.test(findTekst);
+
+  // // Byg regex med eller uden ordgrænser
+  // const regex = erOrd
+  //   ? new RegExp(`\\b${escapeRegex(findTekst)}\\b`, "gi")
+  //   : new RegExp(escapeRegex(findTekst), "gi");
+
+  // // Escape specialtegn
+  // function escapeRegex(tekst) {
+  //   return tekst.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  // }
+
   // Lav en RegExp baseret på søgeteksten.
   // (g = global, i = ignore case)
-  //   const regex = new RegExp(findTekst, "gi");
+
   const regex = new RegExp(`\\b${findTekst}\\b`, "gi");
 
-  // TODO 5: Tæl hvor mange matches der findes i teksten
-  //   Hint: tekst.match(regex) → giver array af matches (eller null hvis ingen)
-  const matches = hentTekst.match(regex);
+  // Tæller matches - returnerer array
+  const matches = tekstfelt.match(regex);
+  console.log("matches:", matches);
 
-  // TODO 6: Erstat alle matches med erstatningsteksten
-  //   Hint: tekst.replace(regex, erstatning)
-  const nyTekst = hentTekst.replaceAll(regex, erstatTekst);
-  console.log("Ny tekst:", nyTekst);
+  // Viser hvor mange udskiftninger, der er blevet foretaget
+  // const antal = matches ? matches.length : 0;
+  const antal = matches.length;
+  console.log("antal matches:", antal);
 
-  // Opdater textarea eller et separat <div> med den nye tekst
-  // opdater textarea eller et andet element
-
-  resultatTekst.textContent = nyTekst;
-
-  // Vis også brugeren hvor mange udskiftninger der blev foretaget
-  const count = matches ? matches.length : 0;
-  if (count === 0) {
-    counterTekst.textContent = "Nul matches – ingen ændringer foretaget";
-  } else if (count === 1) {
-    counterTekst.textContent = `Teksten blev ændret ${count} gang`;
+  if (antal === 0) {
+    statusBesked.textContent = "Nul matches – ingen ændringer foretaget";
+  } else if (antal === 1) {
+    statusBesked.textContent = `Teksten blev ændret 1 gang`;
   } else {
-    counterTekst.textContent = `Teksten blev ændret ${count} gange`;
+    statusBesked.textContent = `Teksten blev ændret ${antal} gange`;
   }
 
-  // Stort bogstav efter .!? bonus
+  // Erstatte matches med erstatningsteksten
+  const nyTekst = tekstfelt.replaceAll(regex, erstatTekst);
+  console.log("Ny tekst:", nyTekst);
+
+  // Indsætter ny tekst i div
+  resultatTekst.textContent = nyTekst;
 });
