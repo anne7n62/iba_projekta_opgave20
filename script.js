@@ -6,7 +6,7 @@ knapErstat.addEventListener("click", function () {
   const findInput = document.getElementById("find-tekst");
   const erstatInput = document.getElementById("erstat-tekst");
   const resultatTekst = document.querySelector("#result-text p");
-  const statusBesked = document.getElementByID("statusbesked");
+  const statusBesked = document.getElementById("statusbesked");
 
   // Hent tekst
   const tekstfelt = tekstfeltInput.value;
